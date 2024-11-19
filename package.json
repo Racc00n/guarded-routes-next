@@ -1,6 +1,6 @@
 {
   "name": "guarded-routes-next",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
@@ -8,9 +8,14 @@
     "build": "tsc",
     "prepublishOnly": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Racc00n/guarded-routes-next.git"
+  },
+  "homepage": "https://github.com/Racc00n/guarded-routes-next#readme",
   "keywords": [],
-  "author": "Roy Kass",
-  "license": "ISC",
+  "author": "Roy Kass roykwork@gmail.com",
+  "license": "MIT",
   "description": "Simple Guarded routes management for Next.js",
   "devDependencies": {
     "typescript": "^5.6.3"
