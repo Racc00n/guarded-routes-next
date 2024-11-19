@@ -1,6 +1,20 @@
 # guarded-routes-next
 
-`guarded-routes-next` is a package for managing route guards in Next.js applications. It allows you to define role-based, feature-flagged, and special-check routes, and provides middleware to enforce these guards.
+`guarded-routes-next` is a package for managing route guards in Next.js applications.
+It was born out of identifying there is a code duplication between checking if a tab exists and blocking/allowing
+its relevant route.
+
+It allows you to define role-based, feature-flagged, special-check routes, or any other check you can think of 
+and provides middleware to enforce these guards.
+
+It's intended to be used as an infrastructure that enables you to make the same checks in your middleware and your tabs seamlessly
+
+After configuring, you get 2 artifacts 
+- isPathAllowed function that is used both in the tabs and in the middle ware, 
+- the middleware itself - guardMiddleware
+
+This infra is scalable and flexible and is production ready.
+Keep in mind that limitations of Next.js still apply (for example, the middleware in Next.js run in an Edge runtime context)
 
 ## Installation
 
@@ -152,6 +166,19 @@ export const safePageGuardedRoutes: GuardedRoutes = {
   }
 };
 ```
+
+Finally, you can create a simple Tab RSC and use it as a wrapper for your client componentTab:
+
+```tsx
+// src/component/tabs/Tab.tsx
+export async function Tab(props:TabProps) {
+    if (!await isPathAllowed(props.path)) {
+        return null;
+    }
+    return <ClientTab {...props} />;
+}
+```
+This way you don't need any checks inline in your JSX and your tabs are "clean".
 
 ## License
 
