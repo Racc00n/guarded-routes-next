@@ -9,9 +9,9 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Roy Kass",
   "license": "ISC",
-  "description": "",
+  "description": "Simple Guarded routes management for Next.js",
   "devDependencies": {
     "typescript": "^5.6.3"
   }
